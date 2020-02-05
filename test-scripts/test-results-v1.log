@@ -1,0 +1,425 @@
+
+Profile: tests from container-test-script.rb (tests from container-test-script.rb)
+Version: (not specified)
+Target:  local://
+
+  Docker Container kdc.paxata.com
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be running[0m
+[38;5;41m     ✔  image should eq "dtr.paxatadev.com/hortonworks/kerboros:2.6.5"[0m
+[38;5;41m     ✔  ports should eq "88/tcp, 749/tcp"[0m
+  Docker Container namenode
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be running[0m
+[38;5;41m     ✔  image should eq "dtr.paxatadev.com/hortonworks/namenode:2.6.5-kerberos-8-hdp"[0m
+[38;5;41m     ✔  ports should eq "8020/tcp, 8022/tcp, 50470/tcp, 0.0.0.0:50070->50070/tcp"[0m
+[38;5;41m     ✔  command should eq "start-hadoop-namenode"[0m
+  Docker Container datanode
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be running[0m
+[38;5;41m     ✔  image should eq "dtr.paxatadev.com/hortonworks/datanode-nodemanager:2.6.5-kerberos-8-hdp"[0m
+[38;5;41m     ✔  ports should eq "8010/tcp, 50010/tcp, 50075/tcp, 50090/tcp, 50475/tcp"[0m
+[38;5;41m     ✔  command should eq "start-hadoop-datanode-nodemanager"[0m
+  Docker Container resourcemanager
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be running[0m
+[38;5;41m     ✔  image should eq "dtr.paxatadev.com/hortonworks/resourcemanager:2.6.5-kerberos-8-hdp"[0m
+[38;5;41m     ✔  ports should eq "8030-8033/tcp, 8090/tcp, 19888-19889/tcp, 0.0.0.0:8088->8088/tcp"[0m
+[38;5;41m     ✔  command should eq "start-hadoop-resourcemanager"[0m
+  Docker Container postgres
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be running[0m
+[38;5;41m     ✔  image should eq "postgres:9"[0m
+[38;5;41m     ✔  ports should eq "5432/tcp"[0m
+  Docker Container hive
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be running[0m
+[38;5;41m     ✔  image should eq "dtr.paxatadev.com/hortonworks/hive:2.6.5-kerberos-8-hdp"[0m
+[38;5;41m     ✔  ports should eq "9083/tcp, 10000-10002/tcp"[0m
+[38;5;41m     ✔  command should eq "start-hive"[0m
+
+Test Summary: [38;5;41m28 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:00+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from common-test-script.rb (tests from common-test-script.rb)
+Version: (not specified)
+Target:  docker://e6f63df4d95d48251e1af03adacdb6383938d35085a218f2e8e91b340a7fd74e
+
+  redhat
+[38;5;41m     ✔  should eq "redhat"[0m
+  Command: `java -version`
+[38;5;41m     ✔  stderr should match "1.8.0_191"[0m
+[38;5;41m     ✔  stdout should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  true
+[38;5;41m     ✔  should eq true[0m
+  Command: `gosu root bash -c 'whoami'`
+[38;5;41m     ✔  stdout should match "root"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  System Package tar
+[38;5;41m     ✔  should be installed[0m
+  System Package wget
+[38;5;41m     ✔  should be installed[0m
+  System Package unzip
+[38;5;41m     ✔  should be installed[0m
+  System Package which
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-workstation
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-libs
+[38;5;41m     ✔  should be installed[0m
+  Command: `hadoop version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `yarn version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Environment variable HADOOP_HOME
+[38;5;41m     ✔  content should eq "/usr/local/hadoop"[0m
+  Environment variable HADOOP_CONF_DIR
+[38;5;41m     ✔  content should eq "/etc/hadoop/conf"[0m
+  Environment variable JAVA_HOME
+[38;5;41m     ✔  content should eq "/usr/java/latest"[0m
+
+Test Summary: [38;5;41m23 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:04+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from namenode-test-script.rb (tests from namenode-test-script.rb)
+Version: (not specified)
+Target:  docker://e6f63df4d95d48251e1af03adacdb6383938d35085a218f2e8e91b340a7fd74e
+
+  File /usr/sbin/start-hadoop-namenode
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be file[0m
+[38;5;41m     ✔  should not be directory[0m
+[38;5;41m     ✔  type should eq :file[0m
+  Command: `jps`
+[38;5;41m     ✔  stdout should match "NameNode"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kinit -kt /etc/hadoop/conf/hdfs.keytab hdfs/$(hostname -f)`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m9 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:14+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from hdfs-test-script.rb (tests from hdfs-test-script.rb)
+Version: (not specified)
+Target:  docker://e6f63df4d95d48251e1af03adacdb6383938d35085a218f2e8e91b340a7fd74e
+
+  Command: `klist`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfsadmin -report`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfs -ls /`
+[38;5;41m     ✔  stdout should match "tmp*"[0m
+[38;5;41m     ✔  stdout should match "usr*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kdestroy`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m10 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:20+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from common-test-script.rb (tests from common-test-script.rb)
+Version: (not specified)
+Target:  docker://9f0ab4f506ca2262494ec1a602ce4f96eedb7d265abf84f1a577804bd898414a
+
+  redhat
+[38;5;41m     ✔  should eq "redhat"[0m
+  Command: `java -version`
+[38;5;41m     ✔  stderr should match "1.8.0_191"[0m
+[38;5;41m     ✔  stdout should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  true
+[38;5;41m     ✔  should eq true[0m
+  Command: `gosu root bash -c 'whoami'`
+[38;5;41m     ✔  stdout should match "root"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  System Package tar
+[38;5;41m     ✔  should be installed[0m
+  System Package wget
+[38;5;41m     ✔  should be installed[0m
+  System Package unzip
+[38;5;41m     ✔  should be installed[0m
+  System Package which
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-workstation
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-libs
+[38;5;41m     ✔  should be installed[0m
+  Command: `hadoop version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `yarn version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Environment variable HADOOP_HOME
+[38;5;41m     ✔  content should eq "/usr/local/hadoop"[0m
+  Environment variable HADOOP_CONF_DIR
+[38;5;41m     ✔  content should eq "/etc/hadoop/conf"[0m
+  Environment variable JAVA_HOME
+[38;5;41m     ✔  content should eq "/usr/java/latest"[0m
+
+Test Summary: [38;5;41m23 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:24+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from datanode-test-script.rb (tests from datanode-test-script.rb)
+Version: (not specified)
+Target:  docker://9f0ab4f506ca2262494ec1a602ce4f96eedb7d265abf84f1a577804bd898414a
+
+  File /usr/sbin/start-hadoop-datanode-nodemanager
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be file[0m
+[38;5;41m     ✔  should not be directory[0m
+[38;5;41m     ✔  type should eq :file[0m
+  Environment variable JSVC_HOME
+[38;5;41m     ✔  content should eq "/usr/bin"[0m
+  Environment variable HADOOP_SECURE_DN_USER
+[38;5;41m     ✔  content should eq "root"[0m
+  Environment variable PIPELINE_CACHE
+[38;5;41m     ✔  content should eq "/usr/local/paxata/pipeline/cache"[0m
+  Environment variable SPARK_TMP
+[38;5;41m     ✔  content should eq "/usr/local/paxata/spark/tmp"[0m
+  Command: `ps -eaf`
+[38;5;41m     ✔  stdout should match "datanode"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `jps`
+[38;5;41m     ✔  stdout should match "NodeManager"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kinit -kt /etc/hadoop/conf/hdfs.keytab hdfs/$(hostname -f)`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m16 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:34+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from hdfs-test-script.rb (tests from hdfs-test-script.rb)
+Version: (not specified)
+Target:  docker://9f0ab4f506ca2262494ec1a602ce4f96eedb7d265abf84f1a577804bd898414a
+
+  Command: `klist`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfsadmin -report`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfs -ls /`
+[38;5;41m     ✔  stdout should match "tmp*"[0m
+[38;5;41m     ✔  stdout should match "usr*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kdestroy`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m10 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:40+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from common-test-script.rb (tests from common-test-script.rb)
+Version: (not specified)
+Target:  docker://5f85e3b562b3f2fa24c885bb8ecb9e0add779452b3a3b9262d2971abee22dda9
+
+  redhat
+[38;5;41m     ✔  should eq "redhat"[0m
+  Command: `java -version`
+[38;5;41m     ✔  stderr should match "1.8.0_191"[0m
+[38;5;41m     ✔  stdout should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  true
+[38;5;41m     ✔  should eq true[0m
+  Command: `gosu root bash -c 'whoami'`
+[38;5;41m     ✔  stdout should match "root"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  System Package tar
+[38;5;41m     ✔  should be installed[0m
+  System Package wget
+[38;5;41m     ✔  should be installed[0m
+  System Package unzip
+[38;5;41m     ✔  should be installed[0m
+  System Package which
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-workstation
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-libs
+[38;5;41m     ✔  should be installed[0m
+  Command: `hadoop version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `yarn version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Environment variable HADOOP_HOME
+[38;5;41m     ✔  content should eq "/usr/local/hadoop"[0m
+  Environment variable HADOOP_CONF_DIR
+[38;5;41m     ✔  content should eq "/etc/hadoop/conf"[0m
+  Environment variable JAVA_HOME
+[38;5;41m     ✔  content should eq "/usr/java/latest"[0m
+
+Test Summary: [38;5;41m23 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:44+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from resourcemanager-test-script.rb (tests from resourcemanager-test-script.rb)
+Version: (not specified)
+Target:  docker://5f85e3b562b3f2fa24c885bb8ecb9e0add779452b3a3b9262d2971abee22dda9
+
+  File /usr/sbin/start-hadoop-resourcemanager
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be file[0m
+[38;5;41m     ✔  should not be directory[0m
+[38;5;41m     ✔  type should eq :file[0m
+  Command: `jps`
+[38;5;41m     ✔  stdout should match "ResourceManager"[0m
+[38;5;41m     ✔  stdout should match "JobHistoryServer"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kinit -kt /etc/hadoop/conf/yarn.keytab yarn/$(hostname -f)`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m10 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:52:54+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from hdfs-test-script.rb (tests from hdfs-test-script.rb)
+Version: (not specified)
+Target:  docker://5f85e3b562b3f2fa24c885bb8ecb9e0add779452b3a3b9262d2971abee22dda9
+
+  Command: `klist`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfsadmin -report`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfs -ls /`
+[38;5;41m     ✔  stdout should match "tmp*"[0m
+[38;5;41m     ✔  stdout should match "usr*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kdestroy`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m10 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:53:00+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from common-test-script.rb (tests from common-test-script.rb)
+Version: (not specified)
+Target:  docker://78d14ce1d8beeea5549e26a1e7e89d2f97a005e35c5e2e321f74131344761f65
+
+  redhat
+[38;5;41m     ✔  should eq "redhat"[0m
+  Command: `java -version`
+[38;5;41m     ✔  stderr should match "1.8.0_191"[0m
+[38;5;41m     ✔  stdout should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  true
+[38;5;41m     ✔  should eq true[0m
+  Command: `gosu root bash -c 'whoami'`
+[38;5;41m     ✔  stdout should match "root"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  System Package tar
+[38;5;41m     ✔  should be installed[0m
+  System Package wget
+[38;5;41m     ✔  should be installed[0m
+  System Package unzip
+[38;5;41m     ✔  should be installed[0m
+  System Package which
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-workstation
+[38;5;41m     ✔  should be installed[0m
+  System Package krb5-libs
+[38;5;41m     ✔  should be installed[0m
+  Command: `hadoop version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `yarn version`
+[38;5;41m     ✔  stdout should match "2.7.3.2.6.5.1001-8*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Environment variable HADOOP_HOME
+[38;5;41m     ✔  content should eq "/usr/local/hadoop"[0m
+  Environment variable HADOOP_CONF_DIR
+[38;5;41m     ✔  content should eq "/etc/hadoop/conf"[0m
+  Environment variable JAVA_HOME
+[38;5;41m     ✔  content should eq "/usr/java/latest"[0m
+
+Test Summary: [38;5;41m23 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:53:08+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from hive-test-script.rb (tests from hive-test-script.rb)
+Version: (not specified)
+Target:  docker://78d14ce1d8beeea5549e26a1e7e89d2f97a005e35c5e2e321f74131344761f65
+
+  File /usr/sbin/start-hive
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be file[0m
+[38;5;41m     ✔  should not be directory[0m
+[38;5;41m     ✔  type should eq :file[0m
+  File /usr/local/hive/conf/hive-site.xml
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be file[0m
+[38;5;41m     ✔  should not be directory[0m
+[38;5;41m     ✔  type should eq :file[0m
+  File /usr/local/hive/lib/postgresql-9.4.1212.jre7.jar
+[38;5;41m     ✔  should exist[0m
+[38;5;41m     ✔  should be file[0m
+[38;5;41m     ✔  should not be directory[0m
+[38;5;41m     ✔  type should eq :file[0m
+  Environment variable HIVE_HOME
+[38;5;41m     ✔  content should eq "/usr/local/hive"[0m
+  Environment variable HIVE_CONF_DIR
+[38;5;41m     ✔  content should eq "/usr/local/hive/conf"[0m
+  Command: `ps -eaf`
+[38;5;41m     ✔  stdout should match "HiveMetaStore"[0m
+[38;5;41m     ✔  stdout should match "HiveServer2"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hive --version`
+[38;5;41m     ✔  stdout should match "1.2.1000.2.6.5.1001-8"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kinit -kt /usr/local/hive/conf/hive.keytab hive/$(hostname -f)`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m23 successful[0m, 0 failures, 0 skipped
+[2018-10-24T09:53:19+00:00] WARN: Cannot find a UUID for your node.
+
+Profile: tests from hdfs-test-script.rb (tests from hdfs-test-script.rb)
+Version: (not specified)
+Target:  docker://78d14ce1d8beeea5549e26a1e7e89d2f97a005e35c5e2e321f74131344761f65
+
+  Command: `klist`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfsadmin -report`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `hdfs dfs -ls /`
+[38;5;41m     ✔  stdout should match "tmp*"[0m
+[38;5;41m     ✔  stdout should match "usr*"[0m
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+  Command: `kdestroy`
+[38;5;41m     ✔  stderr should eq ""[0m
+[38;5;41m     ✔  exit_status should eq 0[0m
+
+Test Summary: [38;5;41m10 successful[0m, 0 failures, 0 skipped
